@@ -8,8 +8,8 @@
 
 import Foundation
 
-//extension Character {
-//    var isWhitespace: Bool {
-//        return CharacterSet.whitespaces.contains(self)
-//    }
-//}
+extension NSAttributedString {
+    func getPotentialLineBreaks() -> [Int] {
+        fatalError()
+    }
+}
