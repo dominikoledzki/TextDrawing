@@ -13,19 +13,18 @@ class DefaultLineBreaker: LineBreaker {
     func breakTextToLines(attributedString: NSAttributedString, maxLineWidth width: Double) -> [CTLine] {
         
         
-//        let typesetter = CTTypesetterCreateWithAttributedString(attributedString)
-//        var lines = [CTLine]()
-//        var start: CFIndex = 0
-//        let length: CFIndex = CFAttributedStringGetLength(attributedString)
-//        
-//        while length - start > 0 {
-//            let count = CTTypesetterSuggestLineBreak(typesetter, start, width)
-//            let line = CTTypesetterCreateLine(typesetter, CFRangeMake(start, count))
-//            start += count
-//            lines.append(line)
-//        }
+        let typesetter = CTTypesetterCreateWithAttributedString(attributedString)
+        var lines = [CTLine]()
+        var start: CFIndex = 0
+        let length: CFIndex = CFAttributedStringGetLength(attributedString)
         
-//        return lines
-        return []
+        while length - start > 0 {
+            let count = CTTypesetterSuggestLineBreak(typesetter, start, width)
+            let line = CTTypesetterCreateLine(typesetter, CFRangeMake(start, count))
+            start += count
+            lines.append(line)
+        }
+        return lines
+//        return []
     }
 }
