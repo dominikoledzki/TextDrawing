@@ -21,17 +21,13 @@ class DefaultLineBreakerTests: XCTestCase {
         
         let lines = DefaultLineBreaker().breakTextToLines(attributedString: attributedString, maxLineWidth: maxLineWidth)
         
-        let lineBreakPoints = [40, 80, 128, 176, 222, 272, 320, 370, 420]
+        let lineBreakPoints = [40, 80, 128, 176, 222, 272, 320, 370, 419]
         let expectedLines = linesFromLineBreakPoints(attributedString: attributedString, lineBreakPoints: lineBreakPoints)
         
         XCTAssertEqual(lines.count, expectedLines.count, "Calculated lines count: \(lines.count), expected lines count: \(expectedLines.count)")
         
-        for (line, expectedLine) in zip(lines, expectedLines) {
-            let lineRange = CTLineGetStringRange(line)
-            let expectedRange = CTLineGetStringRange(expectedLine)
-            let test = lineRange == expectedRange
-            
-            XCTAssert(test, "Calculated line range: \(lineRange), Expected line range: \(expectedRange)")
+        for (i, (line, expectedLine)) in zip(lines, expectedLines).enumerated() {
+            XCTAssert(line == expectedLine, "Line number \(i) invalid")
         }
     }
     
@@ -59,5 +55,29 @@ func == (lhs: CFRange, rhs: CFRange) -> Bool {
 }
 
 func == (lhs: CTLine, rhs: CTLine) -> Bool {
-    fatalError("Not implemented")
+    guard let lhsRuns = CTLineGetGlyphRuns(lhs) as? [CTRun] else { return false }
+    guard let rhsRuns = CTLineGetGlyphRuns(rhs) as? [CTRun] else { return false }
+    
+    return lhsRuns == rhsRuns
+}
+
+extension CTRun: Equatable {
+    public static func == (lhs: CTRun, rhs: CTRun) -> Bool {
+        let lhsGlyphCount = CTRunGetGlyphCount(lhs)
+        let rhsGlyphCount = CTRunGetGlyphCount(rhs)
+        
+        if lhsGlyphCount != rhsGlyphCount {
+            return false
+        }
+        
+        var lhsGlyphBuffer = [CGGlyph](repeating: 0, count: lhsGlyphCount)
+        var rhsGlyphBuffer = [CGGlyph](repeating: 0, count: lhsGlyphCount)
+        
+        let allGlyphsRange = CFRangeMake(0, 0)
+        
+        CTRunGetGlyphs(lhs, allGlyphsRange, &lhsGlyphBuffer)
+        CTRunGetGlyphs(rhs, allGlyphsRange, &rhsGlyphBuffer)
+        
+        return lhsGlyphBuffer == rhsGlyphBuffer
+    }
 }

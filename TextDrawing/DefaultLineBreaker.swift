@@ -11,8 +11,6 @@ import UIKit
 
 class DefaultLineBreaker: LineBreaker {
     func breakTextToLines(attributedString: NSAttributedString, maxLineWidth width: Double) -> [CTLine] {
-        
-        
         let typesetter = CTTypesetterCreateWithAttributedString(attributedString)
         var lines = [CTLine]()
         var start: CFIndex = 0
