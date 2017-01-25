@@ -3,7 +3,7 @@
 //  TextDrawingTests
 //
 //  Created by Dominik Olędzki on 18/01/2017.
-//  Copyright © 2017 Dominik Oledzki. All rights reserved.
+//  Copyright © 2017 Dominik Oledzki.
 //
 
 import XCTest

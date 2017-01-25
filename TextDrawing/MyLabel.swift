@@ -3,7 +3,7 @@
 //  TextDrawing
 //
 //  Created by Dominik Olędzki on 28/12/2016.
-//  Copyright © 2016 Dominik Oledzki. All rights reserved.
+//  Copyright © 2016 Dominik Oledzki.
 //
 
 import UIKit
