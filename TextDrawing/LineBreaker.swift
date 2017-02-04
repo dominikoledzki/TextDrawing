@@ -10,5 +10,6 @@ import UIKit
 import CoreText
 
 protocol LineBreaker {
-    func breakTextToLines(attributedString: NSAttributedString, maxLineWidth: Double) -> [CTLine]
+    init(attributedString: NSAttributedString)
+    func breakTextToLines(maxLineWidth: CGFloat) -> [CTLine]
 }

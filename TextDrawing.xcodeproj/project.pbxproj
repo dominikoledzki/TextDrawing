@@ -20,6 +20,7 @@
 		7FD919BA1E1463DF001242B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FD919B91E1463DF001242B7 /* Assets.xcassets */; };
 		7FD919BD1E1463DF001242B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FD919BB1E1463DF001242B7 /* LaunchScreen.storyboard */; };
 		7FD919C51E1463FA001242B7 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD919C41E1463FA001242B7 /* MyLabel.swift */; };
+		7FF2A1111E43E48D00CED868 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF2A1101E43E48D00CED868 /* CGPoint+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		7FD919BC1E1463DF001242B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FD919BE1E1463DF001242B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FD919C41E1463FA001242B7 /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
+		7FF2A1101E43E48D00CED868 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				7F8F030D1E2D891B0078857F /* LineBreaker.swift */,
 				7F8F030F1E2D89790078857F /* DefaultLineBreaker.swift */,
 				7FC778A01E366CE400F7BADC /* Sequence+ConsecutiveElements.swift */,
+				7FF2A1101E43E48D00CED868 /* CGPoint+Extensions.swift */,
 			);
 			path = TextDrawing;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				7FD919B51E1463DF001242B7 /* ViewController.swift in Sources */,
 				7FD919B31E1463DF001242B7 /* AppDelegate.swift in Sources */,
+				7FF2A1111E43E48D00CED868 /* CGPoint+Extensions.swift in Sources */,
 				7FD919C51E1463FA001242B7 /* MyLabel.swift in Sources */,
 				7FC778A11E366CE400F7BADC /* Sequence+ConsecutiveElements.swift in Sources */,
 				7F8F030E1E2D891B0078857F /* LineBreaker.swift in Sources */,

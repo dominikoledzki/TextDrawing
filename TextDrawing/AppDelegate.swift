@@ -31,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        if isRunningTests() {
+            window?.rootViewController = nil
+            window = nil
+            return true
+        }
 
 //        let str = "Hello\nWorld!"
 //        let attrStr = NSAttributedString(string: str)
@@ -39,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        print(CharacterSet.newlines.allCharacters())
         
         return true
+    }
+    
+    private func isRunningTests() -> Bool {
+        return ProcessInfo.processInfo.environment.keys.contains("XCInjectBundleInto")
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

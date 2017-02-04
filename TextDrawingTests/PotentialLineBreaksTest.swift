@@ -12,36 +12,36 @@ import XCTest
 class PotentialLineBreaksTest: XCTestCase {
     
     func testEmptyStringShouldNotBreak() {
-        XCTAssertEqual("".getPotentialLineBreaks(), [])
+        XCTAssertEqual("".getPotentialLineBreaks(), [0])
     }
     
     func testOneSimpleLineBreak() {
         let str = "Hello, World!"
         let lineBreaks = str.getPotentialLineBreaks()
-        XCTAssertEqual(lineBreaks, [7])
+        XCTAssertEqual(lineBreaks, [7, str.characters.count])
     }
     
     func testLongerButSimpleLineBreaks() {
         let str = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
         let lineBreaks = str.getPotentialLineBreaks()
-        XCTAssertEqual(lineBreaks, [6, 12, 18, 22, 28, 40, 52, 58, 62, 65])
+        XCTAssertEqual(lineBreaks, [6, 12, 18, 22, 28, 40, 52, 58, 62, 65, str.characters.count])
     }
     
     func testTwoConsecutiveSpacesShouldCreateOneBreakPossibility() {
         let str = "Hello,  World!"
         let lineBreaks = str.getPotentialLineBreaks()
-        XCTAssertEqual(lineBreaks, [8])
+        XCTAssertEqual(lineBreaks, [8, str.characters.count])
     }
     
     func testThreeConsecutiveSpacesShouldCreateOneBreakPossibility() {
         let str = "Hello,   World!"
         let lineBreaks = str.getPotentialLineBreaks()
-        XCTAssertEqual(lineBreaks, [9])
+        XCTAssertEqual(lineBreaks, [9, str.characters.count])
     }
     
     func testSpaceAtTheEndShouldNotCreateBreakPossibility() {
         let str = "Hello, World! "
         let lineBreaks = str.getPotentialLineBreaks()
-        XCTAssertEqual(lineBreaks, [7])
+        XCTAssertEqual(lineBreaks, [7, str.characters.count])
     }
 }

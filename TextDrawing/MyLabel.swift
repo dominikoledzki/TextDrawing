@@ -12,8 +12,17 @@ import CoreText
 
 class MyLabel: UIView {
 
-    var attributedText: NSAttributedString?
-    private let lineBreaker = DefaultLineBreaker()
+    var attributedText: NSAttributedString? {
+        didSet {
+            if let attributedText = attributedText {
+                lineBreaker = DefaultLineBreaker(attributedString: attributedText)
+            } else {
+                lineBreaker = nil
+            }
+        }
+    }
+    
+    private var lineBreaker: LineBreaker?
     
     override func draw(_ rect: CGRect) {
         if let text = attributedText {
@@ -23,8 +32,10 @@ class MyLabel: UIView {
     }
     
     func breakTextToLines(_ text: NSAttributedString) -> [CTLine] {
-        let maxLineWidth = Double(bounds.width)
-        return lineBreaker.breakTextToLines(attributedString: text, maxLineWidth: maxLineWidth)
+        guard let lineBreaker = lineBreaker else {
+            return []
+        }
+        return lineBreaker.breakTextToLines(maxLineWidth: bounds.width)
     }
     
     func draw(_ lines: [CTLine]) {

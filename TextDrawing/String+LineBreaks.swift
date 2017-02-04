@@ -16,6 +16,7 @@ extension String {
                 result.append(i + 1)    // break possibility after space, this way you can draw a space at the end of the line without changing the string (because whitespace is not pritable anyways)
             }
         }
+        result.append(self.characters.count)
         return result
     }
 }
