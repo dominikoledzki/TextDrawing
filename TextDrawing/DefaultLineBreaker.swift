@@ -15,6 +15,7 @@ class DefaultLineBreaker: LineBreaker {
     private let typesetter: CTTypesetter
     private let unbrokenLine: CTLine
     
+    
     required init(attributedString: NSAttributedString) {
         self.attributedString = attributedString
         self.typesetter = CTTypesetterCreateWithAttributedString(attributedString)
@@ -24,34 +25,49 @@ class DefaultLineBreaker: LineBreaker {
     func breakTextToLines(maxLineWidth width: CGFloat) -> [CTLine] {
         var result: [CTLine] = []
         
+        let glyphsCount = getGlyphsCount()
         let glyphsPositions = getGlyphsPositions()
+        let glyphsAdvances = getGlyphsAdvances()
         let glyphsIndices = getGlyphsIndices()
         let potentialLineBreaks = attributedString.string.getPotentialLineBreaks()
 
+        // Find the first glyph which does not fit in frame
+        var glyphIndex = 0
         var cumulatedWidth: CGFloat = 0.0
         var lastLineRange = CFRangeMake(0, 0)
-        var lineBreakIndex = 0
         
-        let lastLineBreakIndex = potentialLineBreaks.count - 1
-        while lineBreakIndex != lastLineBreakIndex {
+        while glyphIndex < glyphsCount {
             
-            while lineBreakIndex != lastLineBreakIndex &&
-                glyphsPositions[potentialLineBreaks[lineBreakIndex]] - cumulatedWidth <= width {
-                lineBreakIndex += 1
+            while
+                glyphIndex < glyphsCount &&
+                    glyphsPositions[glyphIndex] + glyphsAdvances[glyphIndex] - cumulatedWidth <= width {
+                        glyphIndex += 1
             }
             
-            if lineBreakIndex != lastLineBreakIndex {
-                lineBreakIndex -= 1
-                let glyphPosition = glyphsPositions[potentialLineBreaks[lineBreakIndex]]
-                cumulatedWidth = glyphPosition
-            }
+            let lineStart = lastLineRange.location + lastLineRange.length
+            let lineLength: Int
             
-            let lineRangeLocation = lastLineRange.location + lastLineRange.length
-            let breakLocation = potentialLineBreaks[lineBreakIndex]
-            let lineRangeLength = breakLocation - lineRangeLocation
-            let lineRange = CFRangeMake(lineRangeLocation, lineRangeLength)
+            if glyphIndex < glyphsCount {
+                let characterIndex = glyphsIndices[glyphIndex]
+                
+                // find closest preceding line break
+                let lineBreak = potentialLineBreaks.last { (index) -> Bool in
+                    return index <= characterIndex
+                    }!
+                lineLength = lineBreak - lineStart
+                
+                let breakGlyphIndex = glyphsIndices.enumerated().last(where: { (_, element) -> Bool in
+                    return element <= lineBreak
+                })!.offset
+                
+                cumulatedWidth = glyphsPositions[breakGlyphIndex]
+            } else {
+                lineLength = 0
+            }
+         
+            
+            let lineRange = CFRangeMake(lineStart, lineLength)
             lastLineRange = lineRange
-            
             let line = CTTypesetterCreateLine(typesetter, lineRange)
             result.append(line)
         }
@@ -79,6 +95,17 @@ class DefaultLineBreaker: LineBreaker {
             indices += runIndices
         }
         return indices
+    }
+    
+    private func getGlyphsAdvances() -> [CGFloat] {
+        var advances = [CGFloat]()
+        for run in CTLineGetGlyphRuns(unbrokenLine) as! [CTRun] {
+            let glyphsCount = CTRunGetGlyphCount(run)
+            var runAdvances = [CGSize](repeating: CGSize.zero, count: glyphsCount)
+            CTRunGetAdvances(run, CFRangeMake(0, 0), &runAdvances)
+            advances += runAdvances.map { $0.width }
+        }
+        return advances
     }
     
     private func getGlyphsCount() -> CFIndex {

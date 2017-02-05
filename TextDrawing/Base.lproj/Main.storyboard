@@ -22,15 +22,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-bg-L8C" customClass="MyLabel" customModule="TextDrawing" customModuleProvider="target">
-                                <rect key="frame" x="20" y="28" width="335" height="300"/>
+                                <rect key="frame" x="20" y="28" width="335" height="631"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="wZS-OJ-e9w"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RMi-bg-L8C" secondAttribute="bottom" constant="8" id="Ew7-Ld-XAc"/>
                             <constraint firstAttribute="trailing" secondItem="RMi-bg-L8C" secondAttribute="trailing" constant="20" symbolic="YES" id="fle-nY-Fef"/>
                             <constraint firstItem="RMi-bg-L8C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="p4w-T8-6GJ"/>
                             <constraint firstItem="RMi-bg-L8C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="u5Q-iN-AZy"/>

@@ -15,7 +15,7 @@ class MyLabel: UIView {
     var attributedText: NSAttributedString? {
         didSet {
             if let attributedText = attributedText {
-                lineBreaker = DefaultLineBreaker(attributedString: attributedText)
+                lineBreaker = lineBreakerProvider(attributedText)
             } else {
                 lineBreaker = nil
             }
@@ -23,6 +23,10 @@ class MyLabel: UIView {
     }
     
     private var lineBreaker: LineBreaker?
+    var lineBreakerProvider = {
+        (attributedString: NSAttributedString) -> LineBreaker in
+        return DefaultLineBreaker(attributedString: attributedString)
+    }
     
     override func draw(_ rect: CGRect) {
         if let text = attributedText {

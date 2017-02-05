@@ -1,5 +1,5 @@
 //
-//  PotentialLineBreaksTest.swift
+//  PotentialLineBreaksTests.swift
 //  TextDrawing
 //
 //  Created by Dominik Olędzki on 18/01/2017.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import TextDrawing
 
-class PotentialLineBreaksTest: XCTestCase {
+class PotentialLineBreaksTests: XCTestCase {
     
     func testEmptyStringShouldNotBreak() {
         XCTAssertEqual("".getPotentialLineBreaks(), [0])

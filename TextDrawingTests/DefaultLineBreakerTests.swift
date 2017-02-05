@@ -11,6 +11,26 @@ import XCTest
 
 class DefaultLineBreakerTests: XCTestCase {
     
+    func testShortExample() {
+        let font = UIFont.systemFont(ofSize: 12.0)
+        let maxLineWidth = CGFloat(280.0)
+        
+        let attributedString = NSAttributedString(string: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt", attributes: [
+            NSFontAttributeName: font
+            ])
+        
+        let lines = DefaultLineBreaker(attributedString: attributedString).breakTextToLines(maxLineWidth: maxLineWidth)
+        
+        let lineBreakPoints = [40, 80]
+        let expectedLines = linesFromLineBreakPoints(attributedString: attributedString, lineBreakPoints: lineBreakPoints)
+        
+        XCTAssertEqual(lines.count, expectedLines.count, "Calculated lines count: \(lines.count), expected lines count: \(expectedLines.count)")
+        
+        for (i, (line, expectedLine)) in zip(lines, expectedLines).enumerated() {
+            XCTAssert(line == expectedLine, "Line number \(i) invalid")
+        }
+    }
+    
     func testLoremIpsumExample() {
         let font = UIFont.systemFont(ofSize: 12.0)
         let maxLineWidth = CGFloat(280.0)
@@ -22,6 +42,26 @@ class DefaultLineBreakerTests: XCTestCase {
         let lines = DefaultLineBreaker(attributedString: attributedString).breakTextToLines(maxLineWidth: maxLineWidth)
         
         let lineBreakPoints = [40, 80, 128, 176, 222, 272, 320, 370, 419]
+        let expectedLines = linesFromLineBreakPoints(attributedString: attributedString, lineBreakPoints: lineBreakPoints)
+        
+        XCTAssertEqual(lines.count, expectedLines.count, "Calculated lines count: \(lines.count), expected lines count: \(expectedLines.count)")
+        
+        for (i, (line, expectedLine)) in zip(lines, expectedLines).enumerated() {
+            XCTAssert(line == expectedLine, "Line number \(i) invalid")
+        }
+    }
+    
+    func testLoremIpsumWithZapfino() {
+        let font = UIFont(name: "Zapfino", size: 12.0)!
+        let maxLineWidth = CGFloat(280.0)
+        
+        let attributedString = NSAttributedString(string: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", attributes: [
+            NSFontAttributeName: font
+            ])
+        
+        let lines = DefaultLineBreaker(attributedString: attributedString).breakTextToLines(maxLineWidth: maxLineWidth)
+        
+        let lineBreakPoints = [40, 80, 117, 155, 197, 233, 275, 313, 351, 392, 431, /*446*/]
         let expectedLines = linesFromLineBreakPoints(attributedString: attributedString, lineBreakPoints: lineBreakPoints)
         
         XCTAssertEqual(lines.count, expectedLines.count, "Calculated lines count: \(lines.count), expected lines count: \(expectedLines.count)")

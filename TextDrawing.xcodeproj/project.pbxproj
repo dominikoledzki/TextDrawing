@@ -11,7 +11,11 @@
 		7F8F030E1E2D891B0078857F /* LineBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8F030D1E2D891B0078857F /* LineBreaker.swift */; };
 		7F8F03101E2D89790078857F /* DefaultLineBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8F030F1E2D89790078857F /* DefaultLineBreaker.swift */; };
 		7F99588C1E2EE0F500936D54 /* TextDrawingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F99588B1E2EE0F500936D54 /* TextDrawingTests.swift */; };
-		7F9958941E2EE12900936D54 /* PotentialLineBreaksTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9958931E2EE12900936D54 /* PotentialLineBreaksTest.swift */; };
+		7F9958941E2EE12900936D54 /* PotentialLineBreaksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9958931E2EE12900936D54 /* PotentialLineBreaksTests.swift */; };
+		7FA602241E462AAE006C6BF4 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA602231E462AAE006C6BF4 /* Sequence+Extensions.swift */; };
+		7FA602261E462AC4006C6BF4 /* SequenceExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA602251E462AC4006C6BF4 /* SequenceExtensionsTests.swift */; };
+		7FA602271E462D3C006C6BF4 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA602231E462AAE006C6BF4 /* Sequence+Extensions.swift */; };
+		7FB61C641E46120A00142299 /* SystemLineBreaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB61C631E46120A00142299 /* SystemLineBreaker.swift */; };
 		7FC778A11E366CE400F7BADC /* Sequence+ConsecutiveElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC778A01E366CE400F7BADC /* Sequence+ConsecutiveElements.swift */; };
 		7FC778A31E36817000F7BADC /* DefaultLineBreakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC778A21E36817000F7BADC /* DefaultLineBreakerTests.swift */; };
 		7FD919B31E1463DF001242B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD919B21E1463DF001242B7 /* AppDelegate.swift */; };
@@ -40,7 +44,10 @@
 		7F9958891E2EE0F500936D54 /* TextDrawingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextDrawingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F99588B1E2EE0F500936D54 /* TextDrawingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDrawingTests.swift; sourceTree = "<group>"; };
 		7F99588D1E2EE0F500936D54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F9958931E2EE12900936D54 /* PotentialLineBreaksTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PotentialLineBreaksTest.swift; sourceTree = "<group>"; };
+		7F9958931E2EE12900936D54 /* PotentialLineBreaksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PotentialLineBreaksTests.swift; sourceTree = "<group>"; };
+		7FA602231E462AAE006C6BF4 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		7FA602251E462AC4006C6BF4 /* SequenceExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceExtensionsTests.swift; sourceTree = "<group>"; };
+		7FB61C631E46120A00142299 /* SystemLineBreaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemLineBreaker.swift; sourceTree = "<group>"; };
 		7FC778A01E366CE400F7BADC /* Sequence+ConsecutiveElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+ConsecutiveElements.swift"; sourceTree = "<group>"; };
 		7FC778A21E36817000F7BADC /* DefaultLineBreakerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultLineBreakerTests.swift; sourceTree = "<group>"; };
 		7FD919AF1E1463DF001242B7 /* TextDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,8 +84,9 @@
 			children = (
 				7F99588B1E2EE0F500936D54 /* TextDrawingTests.swift */,
 				7F99588D1E2EE0F500936D54 /* Info.plist */,
-				7F9958931E2EE12900936D54 /* PotentialLineBreaksTest.swift */,
+				7F9958931E2EE12900936D54 /* PotentialLineBreaksTests.swift */,
 				7FC778A21E36817000F7BADC /* DefaultLineBreakerTests.swift */,
+				7FA602251E462AC4006C6BF4 /* SequenceExtensionsTests.swift */,
 			);
 			path = TextDrawingTests;
 			sourceTree = "<group>";
@@ -116,6 +124,8 @@
 				7F8F030F1E2D89790078857F /* DefaultLineBreaker.swift */,
 				7FC778A01E366CE400F7BADC /* Sequence+ConsecutiveElements.swift */,
 				7FF2A1101E43E48D00CED868 /* CGPoint+Extensions.swift */,
+				7FB61C631E46120A00142299 /* SystemLineBreaker.swift */,
+				7FA602231E462AAE006C6BF4 /* Sequence+Extensions.swift */,
 			);
 			path = TextDrawing;
 			sourceTree = "<group>";
@@ -225,7 +235,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F9958941E2EE12900936D54 /* PotentialLineBreaksTest.swift in Sources */,
+				7FA602261E462AC4006C6BF4 /* SequenceExtensionsTests.swift in Sources */,
+				7F9958941E2EE12900936D54 /* PotentialLineBreaksTests.swift in Sources */,
+				7FA602271E462D3C006C6BF4 /* Sequence+Extensions.swift in Sources */,
 				7F99588C1E2EE0F500936D54 /* TextDrawingTests.swift in Sources */,
 				7FC778A31E36817000F7BADC /* DefaultLineBreakerTests.swift in Sources */,
 			);
@@ -237,12 +249,14 @@
 			files = (
 				7FD919B51E1463DF001242B7 /* ViewController.swift in Sources */,
 				7FD919B31E1463DF001242B7 /* AppDelegate.swift in Sources */,
+				7FA602241E462AAE006C6BF4 /* Sequence+Extensions.swift in Sources */,
 				7FF2A1111E43E48D00CED868 /* CGPoint+Extensions.swift in Sources */,
 				7FD919C51E1463FA001242B7 /* MyLabel.swift in Sources */,
 				7FC778A11E366CE400F7BADC /* Sequence+ConsecutiveElements.swift in Sources */,
 				7F8F030E1E2D891B0078857F /* LineBreaker.swift in Sources */,
 				7F8F03101E2D89790078857F /* DefaultLineBreaker.swift in Sources */,
 				7F18A31D1E20430C003B3ADD /* String+LineBreaks.swift in Sources */,
+				7FB61C641E46120A00142299 /* SystemLineBreaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
